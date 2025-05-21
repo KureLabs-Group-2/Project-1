@@ -295,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 12
   extraJumpForce: 2
-  maxJumpTime: 0.29
+  maxJumpTime: 0.41
   fallMultiplier: 6.15
 --- !u!1 &519420028
 GameObject:
