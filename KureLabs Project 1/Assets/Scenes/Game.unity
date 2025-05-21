@@ -294,9 +294,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 12
-  gravityModifier: 0
-  isOnGround: 1
-  maxJumps: 2
+  extraJumpForce: 2
+  maxJumpTime: 0.29
+  fallMultiplier: 6.15
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

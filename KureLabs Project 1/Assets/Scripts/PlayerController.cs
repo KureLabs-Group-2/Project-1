@@ -4,46 +4,65 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D playerRb;
+    public float jumpForce = 5f;
+    public float extraJumpForce = 2f;
+    public float maxJumpTime = 0.25f;
+    public float fallMultiplier = 2.5f; // Multiplicador de caída rápida
+    private float jumpTimeCounter;
+    private Rigidbody2D rb;
+    private bool isGrounded = true;
+    private bool isJumping = false;
 
-    public float jumpForce = 10;
-    public float gravityModifier;
-
-    public bool isOnGround = true;
-    private int jumpCount = 0;
-    public int maxJumps = 2;
-    
-    
     void Start()
     {
-        playerRb = GetComponent<Rigidbody2D>();
-        //Physics.gravity *= gravityModifier;    //Por si queremos modificar la gravedad, de base esta a (0, -9.81f,0)
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    
     void Update()
     {
-        if (isOnGround)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            jumpCount = 0;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            isJumping = true;
+            jumpTimeCounter = maxJumpTime;
+            isGrounded = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps)
+
+        if (Input.GetKey(KeyCode.Space) && isJumping)
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-            isOnGround = false;
-            jumpCount++;
+            if (jumpTimeCounter > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce + extraJumpForce);
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isJumping = false;
+        }
+
+        // Aumenta la gravedad al subir (subida rápida)
+        if (rb.velocity.y > 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        // Aumenta la gravedad al caer (caída rápida)
+        else if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isOnGround = true;
+            isGrounded = true;
         }
     }
-
-    
-
 }
