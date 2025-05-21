@@ -8,7 +8,11 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce = 10;
     public float gravityModifier;
+
     public bool isOnGround = true;
+    private int jumpCount = 0;
+    public int maxJumps = 2;
+    
     
     void Start()
     {
@@ -19,12 +23,19 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        if (isOnGround)
+        {
+            jumpCount = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             isOnGround = false;
+            jumpCount++;
         }
     }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("ground"))
