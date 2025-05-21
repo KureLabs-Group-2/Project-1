@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - background
-  - ground
+  - Background
+  - Land
+  - Ground
   layers:
   - Default
   - TransparentFX
