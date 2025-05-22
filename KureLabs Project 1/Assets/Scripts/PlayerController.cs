@@ -58,11 +58,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+   private void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
+        foreach (ContactPoint2D contact in collision.contacts)
         {
-            isGrounded = true;
+            // Si la normal apunta hacia arriba (colisión desde arriba)
+            if (contact.normal.y > 0.5f)
+            {
+                // Comprobar que la parte inferior del personaje está por encima del punto de contacto
+                float playerBottom = transform.position.y - (GetComponent<Collider2D>().bounds.size.y / 2f);
+                if (playerBottom > contact.point.y - 0.01f) // 0.01f para tolerancia
+                {
+                    isGrounded = true;
+                    break;
+                }
+            }
         }
     }
+}
 }

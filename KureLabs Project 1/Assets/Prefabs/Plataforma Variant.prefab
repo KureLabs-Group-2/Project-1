@@ -148,19 +148,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4086547029600107519, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
       propertyPath: m_Size.x
-      value: 10
+      value: 5.19
       objectReference: {fileID: 0}
     - target: {fileID: 4086547029600107519, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
       propertyPath: m_Size.y
-      value: 10
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 4086547029600107519, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
       propertyPath: m_Offset.x
-      value: 4
+      value: 4.07
       objectReference: {fileID: 0}
     - target: {fileID: 4086547029600107519, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
       propertyPath: m_Offset.y
-      value: -2
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086547029600107519, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086547029600107519, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
+      propertyPath: m_EdgeRadius
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086547029600107519, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4442907289016852884, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
       propertyPath: m_Name
@@ -229,6 +241,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8577318248932098241, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2782516420923784849}
+    - targetCorrespondingSourceObject: {fileID: 8577318248932098241, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2670952232760743505}
   m_SourcePrefab: {fileID: 100100000, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
 --- !u!1 &891580431647817215 stripped
 GameObject:
@@ -262,6 +277,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!251 &-2670952232760743505
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891580431647817215}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 32.5
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!4 &1433281475234248408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7544461508678274022, guid: d6132d5ce6af18d479a2228e8353456a, type: 3}
