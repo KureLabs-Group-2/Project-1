@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84fc5db0f5ec51e41804150db01301bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 6
 --- !u!114 &661819767435238065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d1a6bdb5cfb7540a6bdc000248fa88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backpoint: -8.8
-  landPrefab: {fileID: 8577318248932098241}
-  posX: -13.6
+  landPrefabList: []
+  treePrefabList: []
+  levelTime: 2

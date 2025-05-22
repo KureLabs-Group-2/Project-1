@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 798728612786086739}
   - component: {fileID: -2010319936643748802}
   m_Layer: 0
-  m_Name: "Oto\xF1oBackground"
+  m_Name: VeranoBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: d7877e06176f92146814c7b18a27c403, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c31d9ca624f77314a8c71853aa03bdd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,6 +113,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landPrefabList:
   - {fileID: 5603573698825034902, guid: afbffc7402432d34481dd519136f54e5, type: 3}
-  - {fileID: 5603573698825034902, guid: b90ccb1007ec0d341ba887782a0d5f9b, type: 3}
   - {fileID: 5603573698825034902}
+  - {fileID: 5603573698825034902, guid: b8919a5b3a249cc43b902a365c0bbd23, type: 3}
   - {fileID: 5603573698825034902, guid: 6f573873e226efd409bdd86626e009c6, type: 3}

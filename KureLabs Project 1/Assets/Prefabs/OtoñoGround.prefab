@@ -111,4 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d1a6bdb5cfb7540a6bdc000248fa88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landPrefab: {fileID: 2081327005772740502}
+  landPrefabList:
+  - {fileID: 2081327005772740502, guid: 1ec2dd3dc2cb28e4b94eb751b0c2ff2d, type: 3}
+  - {fileID: 2081327005772740502, guid: 9c7d6adf2e23a3145a3471c55662f469, type: 3}
+  - {fileID: 2081327005772740502}
+  - {fileID: 2081327005772740502, guid: 8ebcbe33e551cda44ba7d669da0cb1f8, type: 3}
