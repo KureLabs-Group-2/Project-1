@@ -26,7 +26,6 @@ public class SpawnManager : MonoBehaviour
 
         float randomRate = UnityEngine.Random.Range(2, 4);
 
-
         Invoke(nameof(TreeRandomGenerator), randomRate);
 
     }
