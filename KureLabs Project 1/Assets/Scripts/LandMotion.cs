@@ -6,28 +6,20 @@ using UnityEngine;
 
 public class LandMotion : MonoBehaviour
 {
-    private Vector3 startPos;
 
-    public float backpoint = -8.8f;
+    public GameObject landPrefab;
+    public GameObject[] treePrefabList;
 
-    private float repeatWidth;
-
-    public GameObject landPrefab; 
-    private Vector3 spawnPos = new Vector3(23.7f, 1.6f, 0);
-    public float posX = -13.6f;
-    private float boundX = -32f;
+    private Vector3 spawnPos = new Vector3(27.8f, 0, 0);
+    private float posX = -9.78f;             // esta posición es repecto al prefab y no al objeto Background
+    private float boundX = -35f;
     bool hasInstantiated = false;
 
 
 
     void Start()
     {
-        
 
-        startPos = transform.position;   //iguala la posición del background y ground a la posicion 0
-
-
-        //repeatWidth = GetComponent<BoxCollider2D>().size.x / 2;    //guarda en la variable la mitad del ancho del background
     }
 
     
@@ -47,11 +39,26 @@ public class LandMotion : MonoBehaviour
     {
         if (transform.position.x < posX && !hasInstantiated)
         {
-            Debug.Log("ha entrado en el if");
             Instantiate(landPrefab, spawnPos, landPrefab.transform.rotation);
             hasInstantiated= true;
         }
 
+    }
+
+    void TreeRandomGenerator()
+    {
+        float randomRate = UnityEngine.Random.Range(0.5f, 2);
+
+
+        InvokeRepeating("TreeInstantiate", 0, randomRate);
+
+    }
+
+    void TreeInstantiate()
+    {
+        int randomTree = UnityEngine.Random.Range(0, treePrefabList.Length);
+
+        Instantiate(treePrefabList[randomTree], spawnPos, treePrefabList[randomTree].transform.rotation);
     }
 
 
