@@ -8,7 +8,7 @@ public class OneWayPlatform : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && Input.GetButtonDown("Jump"))
+        if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)))
         {
             ReverseOneWay();
         }
