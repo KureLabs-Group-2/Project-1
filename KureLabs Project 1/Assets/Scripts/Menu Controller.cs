@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Rendering.PostProcessing;
 public class MenuController : MonoBehaviour
 {
     [Header("Volume Setting")]
@@ -11,7 +12,14 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private float defaultVolume = 1.0f;
 
-    [Header("Gameplay Settings")]
+    [Header("Brightness Settings")]
+    [SerializeField] private Slider brightnessSlider = null;
+    [SerializeField] private TMP_Text brightnessTexValue = null;
+    [SerializeField] private float defaultBrightness = 1;
+
+    public PostProcessProfile brightness;
+    public PostProcessLayer layer;
+    private float _brightnessLevel;
 
 
     [Header("Confirmation")]
@@ -58,6 +66,13 @@ public class MenuController : MonoBehaviour
 
     public void ResetButton(string MenuType)
     {
+        if (MenuType == "Brightness")
+        {
+            brightnessSlider.value = defaultBrightness;
+            brightnessTexValue.text = defaultBrightness.ToString("0.0");
+            SetBrightness(defaultBrightness);  // Aplica visualmente el valor
+            BrightnessApply();                 // Guarda en PlayerPrefs si es necesario
+        }
         if (MenuType == "Audio")
         {
             AudioListener.volume = defaultVolume;
@@ -67,10 +82,27 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    public void SetBrightness(float brightness)
+    {
+        _brightnessLevel = brightness;
+        brightnessTexValue.text = brightness.ToString("0.0");
+
+        AutoExposure exposure;
+        if (this.brightness.TryGetSettings(out exposure))
+        {
+            exposure.keyValue.value = Mathf.Max(0.05f, brightness);
+        }
+    }
+
+    public void BrightnessApply()
+    {
+        PlayerPrefs.SetFloat("masterBrightness", _brightnessLevel);
+    }
+
     public IEnumerator ConfirmationBox()
     {
         confirmationPrompt.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         confirmationPrompt.SetActive(false);
     }
 }
