@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    private float levelTime = 20f;
-    public static float nextLeveltime = 20f;
+    private int levelTime = 20;
+    public static int nextLeveltime = 20;
     public static int actualLevel = 0;
     public static bool levelChange = false;
 
@@ -43,9 +43,9 @@ public class GameManager : MonoBehaviour
             { 
                 NextLevel();
             }
-            if (timeElapsed >= nextLeveltime - 3)
+            if (timeElapsed >= nextLeveltime - 3 && timeElapsed <= nextLeveltime-2)
             {
-                Debug.Log("Iniciando corrutina de Fade");
+                Debug.Log("Iniciando Corrutina de FadeOutIn");
                 StartCoroutine(screenFader.FadeOutIn(holdFadeTime));
             }
         }

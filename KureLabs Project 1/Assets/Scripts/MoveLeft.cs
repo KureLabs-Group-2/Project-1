@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoveLeft : MonoBehaviour
 {
     public float speed = 6;
-    private float boundX = -60f;
+    private float boundX = -45f;
 
 
     void Update()
