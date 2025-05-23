@@ -7,37 +7,61 @@ public class ScreenFader : MonoBehaviour
 {
 
     public Image fadeBlack;
-    public float fadeDuration = 1f;
+    Vector2 targetSize = new Vector2(1920, 1080);
+    Vector3 targetPos = new Vector3(0,0,0);
+    public float fadeDuration = 0.2f;
+    public float transformDuration;
+
+    Vector2 initialSize;
+    Vector3 initialPos;
+
+    private void Start()
+    {
+        initialSize = fadeBlack.rectTransform.sizeDelta;
+        initialPos = fadeBlack.rectTransform.localPosition;
+    }
 
     public IEnumerator FadeOutIn(float holdTime)
     {
+        
+
         float t = 0f;
-        Color c = fadeBlack.color;
+        //Color c = fadeBlack.color;
 
         while (t < fadeDuration)
         {
+
             t += Time.deltaTime;
-            c.a = Mathf.Lerp(0f, 1f, t / fadeDuration); // De transparente a negro
-            fadeBlack.color = c;
+            //c.a = Mathf.Lerp(0f, 1f, t / fadeDuration); // De transparente a negro
+
+            fadeBlack.rectTransform.sizeDelta = Vector2.Lerp(initialSize,targetSize, t);
+            fadeBlack.rectTransform.localPosition = Vector3.Lerp(initialPos, targetPos, t);
+            
+            //fadeBlack.color = c;
             yield return null;
         }
 
-        c.a = 1f;
-        fadeBlack.color = c;
+        //c.a = 1f;
+        //fadeBlack.color = c;
 
         yield return new WaitForSeconds(holdTime);
+
 
         // Fade in (de negro a transparente)
         t = 0f;
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
-            c.a = Mathf.Lerp(1f, 0f, t / fadeDuration);
-            fadeBlack.color = c;
+            //c.a = Mathf.Lerp(1f, 0f, t / fadeDuration);
+
+            fadeBlack.rectTransform.localScale = Vector2.Lerp(targetSize,initialSize , t);
+            fadeBlack.rectTransform.localPosition = Vector3.Lerp(targetPos, initialPos, t);
+
+            //fadeBlack.color = c;
             yield return null;
         }
-        c.a = 0f;
-        fadeBlack.color = c;
+        //c.a = 0f;
+        //fadeBlack.color = c;
     }
 
 }
