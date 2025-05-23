@@ -14,11 +14,12 @@ public class GameManager : MonoBehaviour
     public static bool levelChange = false;
 
     public ScreenFader screenFader;
-    public float holdFadeTime = 5f;
+    public float holdFadeTime = 2f;
 
     public TMP_Text timerText;
     public static float timeElapsed;
     static public bool gameOver = true;
+    static public bool hasFading=false;
     
 
     void Start()
@@ -43,8 +44,9 @@ public class GameManager : MonoBehaviour
             { 
                 NextLevel();
             }
-            if (timeElapsed >= nextLeveltime - 3 && timeElapsed <= nextLeveltime-2)
+            if (!hasFading && timeElapsed >= nextLeveltime - 3 && timeElapsed <= nextLeveltime-2)
             {
+                hasFading = true;
                 Debug.Log("Iniciando Corrutina de FadeOutIn");
                 StartCoroutine(screenFader.FadeOutIn(holdFadeTime));
             }
