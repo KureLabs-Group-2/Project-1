@@ -62,6 +62,8 @@ public class ScreenFader : MonoBehaviour
         }
         //c.a = 0f;
         //fadeBlack.color = c;
+
+        GameManager.levelChange = false;
     }
 
 }
