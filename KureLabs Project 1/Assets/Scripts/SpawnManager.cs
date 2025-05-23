@@ -16,7 +16,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(ObjectRandomGenerator());
+        StartCoroutine(TreeRandomGenerator());
+        StartCoroutine(ZarzaRandomGenerator());
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    IEnumerator ObjectRandomGenerator()
+    IEnumerator TreeRandomGenerator()
     {
         while (true)
         {
@@ -36,13 +37,29 @@ public class SpawnManager : MonoBehaviour
 
             TreeInstantiate();
 
-            ZarzaInstantiate();
 
-            float randomRate = UnityEngine.Random.Range(1, 4);
+            float randomRate = UnityEngine.Random.Range(2, 4);
 
             yield return new WaitForSeconds(randomRate);
         }
 
+    }
+
+    IEnumerator ZarzaRandomGenerator()
+    {
+        while (true)
+        {
+            while (GameManager.levelChange)
+            {
+                yield return null;
+            }
+
+            ZarzaInstantiate();
+
+            float randomRate = UnityEngine.Random.Range(3, 6);
+
+            yield return new WaitForSeconds(randomRate);
+        }
     }
 
     void TreeInstantiate()

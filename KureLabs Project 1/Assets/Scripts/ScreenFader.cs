@@ -26,42 +26,38 @@ public class ScreenFader : MonoBehaviour
         
 
         float t = 0f;
-        //Color c = fadeBlack.color;
 
         while (t < fadeDuration)
         {
 
             t += Time.deltaTime;
-            //c.a = Mathf.Lerp(0f, 1f, t / fadeDuration); // De transparente a negro
 
             fadeBlack.rectTransform.sizeDelta = Vector2.Lerp(initialSize,targetSize, t);
             fadeBlack.rectTransform.localPosition = Vector3.Lerp(initialPos, targetPos, t);
-            
-            //fadeBlack.color = c;
+
             yield return null;
         }
 
-        //c.a = 1f;
-        //fadeBlack.color = c;
 
         yield return new WaitForSeconds(holdTime);
 
 
-        // Fade in (de negro a transparente)
         t = 0f;
+
+        Debug.Log("Iniciando FadoIn");
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
-            //c.a = Mathf.Lerp(1f, 0f, t / fadeDuration);
 
             fadeBlack.rectTransform.localScale = Vector2.Lerp(targetSize,initialSize , t);
             fadeBlack.rectTransform.localPosition = Vector3.Lerp(targetPos, initialPos, t);
-
-            //fadeBlack.color = c;
+            Debug.Log("Fade IN...");
+            
             yield return null;
         }
-        //c.a = 0f;
-        //fadeBlack.color = c;
+
+        Debug.Log("FadeIn terminado");
+       
 
         GameManager.levelChange = false;
     }
