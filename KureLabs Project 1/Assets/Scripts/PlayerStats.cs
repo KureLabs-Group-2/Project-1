@@ -1,41 +1,19 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
     public int vida = 3;
-    public int puntos = 0;
-    public int puntosPorTiempo = 0;
-    public int puntosPorSegundo = 1;
     public SpriteRenderer spriteRenderer; // Asigna el SpriteRenderer en el Inspector
     public bool invulnerable = false;
 
-    public TMP_Text puntosText; // Asigna este campo en el Inspector para mostrar los puntos
-
-    void Update()
+    void Start()
     {
-        // Sumar puntos por tiempo recorrido
-        GameManager.timeElapsed += Time.deltaTime;
-        if (GameManager.timeElapsed >= 1f)
+        vida = 3;
+        if (spriteRenderer == null)
         {
-            puntosPorTiempo += puntosPorSegundo;
-            puntos += puntosPorSegundo;
-            GameManager.timeElapsed = 0f;
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
-
-        // Mostrar puntos en tiempo real
-        if (puntosText != null)
-        {
-            puntosText.text = "Puntos: " + puntos;
-        }
-    }
-
-    // Llama a este método cuando recojas un objeto
-    public void SumarPuntos(int cantidad)
-    {
-        puntos += cantidad;
-        Debug.Log("Puntos actuales: " + puntos);
     }
 
     // Llama a este método cuando recibas daño

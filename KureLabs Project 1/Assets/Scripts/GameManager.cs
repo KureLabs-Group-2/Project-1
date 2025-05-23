@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
     private int levelTime = 20;
     public static int nextLeveltime = 20;
     public static int actualLevel = 0;
@@ -17,22 +16,27 @@ public class GameManager : MonoBehaviour
     public float holdFadeTime = 2f;
 
     public TMP_Text timerText;
+    public TMP_Text puntosText; // Asigna en el Inspector el texto de puntos
+
+    public int puntos = 0;
+    public int puntosPorSegundo = 1;
+
     public static float timeElapsed;
-    static public bool gameOver = true;
-    static public bool hasFading=false;
-    
+    public static bool gameOver = true;
+    public static bool hasFading = false;
 
     void Start()
     {
         actualLevel = 0;
         timerText.gameObject.SetActive(false);
+        if (puntosText != null)
+            puntosText.gameObject.SetActive(true);
         gameOver = false;
         timeElapsed = 0f;
         actualLevel = 0;
-    
+        puntos = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!gameOver)
@@ -40,11 +44,23 @@ public class GameManager : MonoBehaviour
             timerText.gameObject.SetActive(true);
             timeElapsed += Time.deltaTime;
             UpdateTimerDisplay();
+
+            // --- Gestión de puntos por tiempo ---
+            if (timeElapsed >= 1f)
+            {
+                puntos += puntosPorSegundo;
+                timeElapsed = 0f;
+            }
+
+            // --- Mostrar puntos en tiempo real ---
+            if (puntosText != null)
+                puntosText.text = "Puntos: " + puntos;
+
             if (timeElapsed >= nextLeveltime)
-            { 
+            {
                 NextLevel();
             }
-            if (!hasFading && timeElapsed >= nextLeveltime - 3 && timeElapsed <= nextLeveltime-2)
+            if (!hasFading && timeElapsed >= nextLeveltime - 3 && timeElapsed <= nextLeveltime - 2)
             {
                 hasFading = true;
                 Debug.Log("Iniciando Corrutina de FadeOutIn");
@@ -58,7 +74,7 @@ public class GameManager : MonoBehaviour
         levelChange = true;
         actualLevel++;
         levelTime += nextLeveltime;
-        Debug.Log("Cambio de estaci�n. Actual level: " + actualLevel);
+        Debug.Log("Cambio de estación. Actual level: " + actualLevel);
         if (actualLevel > 3) { actualLevel = 0; }
     }
 
@@ -77,4 +93,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Método público para sumar puntos desde otros scripts
+    public void SumarPuntos(int cantidad)
+    {
+        puntos += cantidad;
+        Debug.Log("Puntos actuales: " + puntos);
+    }
 }

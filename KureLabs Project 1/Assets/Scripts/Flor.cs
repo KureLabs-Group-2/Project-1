@@ -7,8 +7,7 @@ public class Flor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerStats stats = collision.GetComponent<PlayerStats>();
-        if (stats != null)
+        if (collision.GetComponent<PlayerStats>() != null)
         {
             int puntos = 0;
             switch (tipoFlor)
@@ -23,7 +22,7 @@ public class Flor : MonoBehaviour
                     puntos = 100;
                     break;
             }
-            stats.SumarPuntos(puntos);
+            FindObjectOfType<GameManager>().SumarPuntos(puntos);
             Destroy(gameObject);
         }
     }
