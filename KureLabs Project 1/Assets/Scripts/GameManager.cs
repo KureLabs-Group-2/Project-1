@@ -49,21 +49,19 @@ public class GameManager : MonoBehaviour
             if (timeElapsed >= 1f)
             {
                 puntos += puntosPorSegundo;
-                timeElapsed = 0f;
             }
 
             // --- Mostrar puntos en tiempo real ---
             if (puntosText != null)
                 puntosText.text = "Puntos: " + puntos;
 
-            if (timeElapsed >= nextLeveltime)
-            {
-                NextLevel();
-            }
+
             if (!hasFading && timeElapsed >= nextLeveltime - 3 && timeElapsed <= nextLeveltime - 2)
             {
                 hasFading = true;
-                Debug.Log("Iniciando Corrutina de FadeOutIn");
+                
+                NextLevel();
+                
                 StartCoroutine(screenFader.FadeOutIn(holdFadeTime));
             }
         }
@@ -71,7 +69,6 @@ public class GameManager : MonoBehaviour
 
     void NextLevel()
     {
-        levelChange = true;
         actualLevel++;
         levelTime += nextLeveltime;
         Debug.Log("Cambio de estación. Actual level: " + actualLevel);
@@ -99,4 +96,6 @@ public class GameManager : MonoBehaviour
         puntos += cantidad;
         Debug.Log("Puntos actuales: " + puntos);
     }
+
+
 }

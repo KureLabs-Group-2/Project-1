@@ -1,17 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] treePrefabList;
     public GameObject[] zarzaPrefabList;
+    public GameObject[] backgroundList;
+    public GameObject[] groundList;
 
     int randomTree;
     int zarzaNum;
 
-    Vector3 treeSpawnPos = new Vector3 (12.5f, -3.8f, 0);
-    Vector3 spawnPos = new Vector3(12.5f,0,0);
+    float timeElapsed;
+
+    Vector3 ObjectSpawnPos = new Vector3(12.5f, -3.8f, 0);
+    public static Vector3 spawnPos = new Vector3(27.8f, 0, 0);
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,20 +30,22 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timeElapsed = GameManager.timeElapsed;
+        if (GameManager.levelChange)
+        {
+
+            Debug.Log("Se paran todas las courutinas");
+            StopAllCoroutines();
+        }
+
     }
 
     IEnumerator TreeRandomGenerator()
     {
         while (true)
         {
-            while (GameManager.levelChange)
-            {
-                yield return null;
-            }
 
             TreeInstantiate();
-
 
             float randomRate = UnityEngine.Random.Range(2, 4);
 
@@ -49,11 +58,6 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            while (GameManager.levelChange)
-            {
-                yield return null;
-            }
-
             ZarzaInstantiate();
 
             float randomRate = UnityEngine.Random.Range(3, 6);
@@ -83,7 +87,7 @@ public class SpawnManager : MonoBehaviour
                 return;
         }
 
-        Instantiate(treePrefabList[randomTree], treeSpawnPos, treePrefabList[randomTree].transform.rotation);
+        Instantiate(treePrefabList[randomTree], ObjectSpawnPos, treePrefabList[randomTree].transform.rotation);
     }
 
     void ZarzaInstantiate()
@@ -99,6 +103,7 @@ public class SpawnManager : MonoBehaviour
                 return;
         }
 
-        Instantiate(zarzaPrefabList[zarzaNum], treeSpawnPos, zarzaPrefabList[zarzaNum].transform.rotation);
+        Instantiate(zarzaPrefabList[zarzaNum], ObjectSpawnPos, zarzaPrefabList[zarzaNum].transform.rotation);
     }
 }
+

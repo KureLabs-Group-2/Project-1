@@ -19,12 +19,12 @@ public class ZarzaSpawner : MonoBehaviour
     {
      
          timer += Time.deltaTime;
-        if (timer >= intervaloActual)
+        /*if (timer >= intervaloActual)
         {
             Instantiate(zarzaPrefab, posicionSpawn, Quaternion.identity);
             timer = 0f;
             intervaloActual = Random.Range(intervaloMin, intervaloMax);
-        }  
+        }  */
     }
    
     

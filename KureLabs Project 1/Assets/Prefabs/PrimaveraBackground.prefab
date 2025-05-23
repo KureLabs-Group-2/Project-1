@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 882073100747655527}
   - component: {fileID: 1857853402798821584}
   - component: {fileID: 798728612786086739}
-  - component: {fileID: -2010319936643748802}
+  - component: {fileID: 114325645400276140}
   m_Layer: 0
   m_Name: PrimaveraBackground
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4.5
---- !u!114 &-2010319936643748802
+--- !u!114 &114325645400276140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5603573698825034902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76d1a6bdb5cfb7540a6bdc000248fa88, type: 3}
+  m_Script: {fileID: 11500000, guid: 36f75edaa3b899e4ba7ce07c982c10b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   landPrefabList:
