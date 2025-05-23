@@ -6,13 +6,16 @@ using UnityEngine;
 public class MoveLeft : MonoBehaviour
 {
     public float speed = 6;
-    private float boundX = -38f;
+    private float boundX = -60f;
 
 
     void Update()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
-
+        if (!GameManager.levelChange)
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
+        }
+ 
         if (transform.position.x < boundX)
         {
             Destroy(gameObject);

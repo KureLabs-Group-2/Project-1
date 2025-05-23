@@ -9,23 +9,26 @@ public class GameManager : MonoBehaviour
 {
 
     private float levelTime = 20f;
+    public static float nextLeveltime = 20f;
     public static int actualLevel = 0;
+    public static bool levelChange = false;
 
     public ScreenFader screenFader;
     public float holdFadeTime = 5f;
 
     public TMP_Text timerText;
-    public float timeElapsed;
+    public static float timeElapsed;
     static public bool gameOver = true;
     
 
     void Start()
     {
+        actualLevel = 0;
         timerText.gameObject.SetActive(false);
         gameOver = false;
         timeElapsed = 0f;
         actualLevel = 0;
-        InvokeRepeating("NextLevel", levelTime, levelTime);
+    
     }
 
     // Update is called once per frame
@@ -36,13 +39,18 @@ public class GameManager : MonoBehaviour
             timerText.gameObject.SetActive(true);
             timeElapsed += Time.deltaTime;
             UpdateTimerDisplay();
+            if (timeElapsed >= nextLeveltime)
+            { 
+                NextLevel();
+            }
         }
     }
 
     void NextLevel()
     {
-       
+        levelChange = true;
         actualLevel++;
+        levelTime += nextLeveltime;
         Debug.Log("Cambio de estación. Actual level: " + actualLevel);
         if (actualLevel > 3) { actualLevel = 0; }
         
