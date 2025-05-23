@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 97068237}
   - component: {fileID: 97068236}
   - component: {fileID: 97068238}
-  - component: {fileID: 97068239}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -184,38 +183,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae228b71cd626466e82b2413ff34f123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  florPrefab: {fileID: 5561100170798209032, guid: 3dee6508e5aa84efda95e2d306273933, type: 3}
+  girasolPrefab: {fileID: 5561100170798209032, guid: 3dee6508e5aa84efda95e2d306273933, type: 3}
+  margaritaPrefab: {fileID: 7564201940964267522, guid: 85ce2ba4813f04367a5133bc8b80d68b, type: 3}
+  rosaPrefab: {fileID: 1141057773219965331, guid: 9b846dc4ca53e49fdb5828266cb694a7, type: 3}
   minX: 18
   maxX: 23
   minY: -4
   maxY: 3.5
-  tiempoEntreFlores: 8
+  tiempoEntreFlores: 2
   layerEvitar:
     serializedVersion: 2
-    m_Bits: 0
-  radioChequeo: 0.5
---- !u!114 &97068239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 97068235}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b2c3d97b2ba64fe5803cabf1ac9a8a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zarzaPrefab: {fileID: 3177183536235148380, guid: 74c50d57877e64482a734e6520a7f8d3, type: 3}
-  florPrefab: {fileID: 5561100170798209032, guid: 3dee6508e5aa84efda95e2d306273933, type: 3}
-  minX: 0
-  maxX: 0
-  minY: 0
-  maxY: 0
-  tiempoEntreSpawns: 3
-  layerEvitar:
-    serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   radioChequeo: 0.5
 --- !u!1 &249106598
 GameObject:
@@ -326,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeBlack: {fileID: 431639240}
   fadeDuration: 1
+  transformDuration: 0
 --- !u!114 &431639240
 MonoBehaviour:
   m_ObjectHideFlags: 0
