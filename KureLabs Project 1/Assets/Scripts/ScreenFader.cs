@@ -44,12 +44,12 @@ public class ScreenFader : MonoBehaviour
 
         t = 0f;
 
-        Debug.Log("Iniciando FadoIn");
+        Debug.Log("Iniciando FadeIn");
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
 
-            fadeBlack.rectTransform.localScale = Vector2.Lerp(targetSize,initialSize , t);
+            fadeBlack.rectTransform.sizeDelta = Vector2.Lerp(targetSize,initialSize , t);
             fadeBlack.rectTransform.localPosition = Vector3.Lerp(targetPos, initialPos, t);
             Debug.Log("Fade IN...");
             
@@ -60,6 +60,7 @@ public class ScreenFader : MonoBehaviour
        
 
         GameManager.levelChange = false;
+        GameManager.hasFading = false;
     }
 
 }
