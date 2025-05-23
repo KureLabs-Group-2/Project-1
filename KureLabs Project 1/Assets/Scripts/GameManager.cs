@@ -43,6 +43,11 @@ public class GameManager : MonoBehaviour
             { 
                 NextLevel();
             }
+            if (timeElapsed >= nextLeveltime - 3)
+            {
+                Debug.Log("Iniciando corrutina de Fade");
+                StartCoroutine(screenFader.FadeOutIn(holdFadeTime));
+            }
         }
     }
 
@@ -53,9 +58,6 @@ public class GameManager : MonoBehaviour
         levelTime += nextLeveltime;
         Debug.Log("Cambio de estación. Actual level: " + actualLevel);
         if (actualLevel > 3) { actualLevel = 0; }
-        
-        StartCoroutine(screenFader.FadeOutIn(holdFadeTime));
-
     }
 
     void UpdateTimerDisplay()

@@ -7,45 +7,61 @@ public class ScreenFader : MonoBehaviour
 {
 
     public Image fadeBlack;
-    public float fadeDuration = 1f;
-    
+    Vector2 targetSize = new Vector2(1920, 1080);
+    Vector3 targetPos = new Vector3(0,0,0);
+    public float fadeDuration = 0.2f;
+    public float transformDuration;
 
+    Vector2 initialSize;
+    Vector3 initialPos;
+
+    private void Start()
+    {
+        initialSize = fadeBlack.rectTransform.sizeDelta;
+        initialPos = fadeBlack.rectTransform.localPosition;
+    }
 
     public IEnumerator FadeOutIn(float holdTime)
     {
+        
+
         float t = 0f;
-        RectTransform rt = fadeBlack.rectTransform;
-
-        float fullWidth = Screen.width;
-
-        rt.pivot = new Vector2(0, 0.5f); // Asegúrate de que el pivot esté a la izquierda
-        rt.anchoredPosition = new Vector2(0, 0); // Empieza desde la izquierda
+        //Color c = fadeBlack.color;
 
         while (t < fadeDuration)
         {
+
             t += Time.deltaTime;
-            float width = Mathf.Lerp(0f, fullWidth, t / fadeDuration);
-            rt.sizeDelta = new Vector2(width, rt.sizeDelta.y);
+            //c.a = Mathf.Lerp(0f, 1f, t / fadeDuration); // De transparente a negro
+
+            fadeBlack.rectTransform.sizeDelta = Vector2.Lerp(initialSize,targetSize, t);
+            fadeBlack.rectTransform.localPosition = Vector3.Lerp(initialPos, targetPos, t);
+            
+            //fadeBlack.color = c;
             yield return null;
         }
 
-        rt.sizeDelta = new Vector2(fullWidth, rt.sizeDelta.y);
+        //c.a = 1f;
+        //fadeBlack.color = c;
 
         yield return new WaitForSeconds(holdTime);
 
-        t = 0f;
-        rt.pivot = new Vector2(1, 0.5f); // Cambia el pivot a la derecha
-        rt.anchoredPosition = new Vector2(fullWidth, 0); // Alinea al borde derecho
 
+        // Fade in (de negro a transparente)
+        t = 0f;
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
-            float width = Mathf.Lerp(fullWidth, 0f, t / fadeDuration);
-            rt.sizeDelta = new Vector2(width, rt.sizeDelta.y);
+            //c.a = Mathf.Lerp(1f, 0f, t / fadeDuration);
+
+            fadeBlack.rectTransform.localScale = Vector2.Lerp(targetSize,initialSize , t);
+            fadeBlack.rectTransform.localPosition = Vector3.Lerp(targetPos, initialPos, t);
+
+            //fadeBlack.color = c;
             yield return null;
         }
-
-        rt.sizeDelta = new Vector2(0f, rt.sizeDelta.y);
+        //c.a = 0f;
+        //fadeBlack.color = c;
     }
 
 }

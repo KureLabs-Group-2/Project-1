@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    float cameraSpeed = 10;
+    float cameraSpeed = 5;
     float targetX = -16;
     
     // Start is called before the first frame update
@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.timeElapsed >= GameManager.nextLeveltime - 2)
+        if (GameManager.timeElapsed >= GameManager.nextLeveltime - 5)
         {
             if (transform.position.x > targetX)
             {
