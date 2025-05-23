@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 48459623769210146}
   - component: {fileID: 8085400828680107365}
   - component: {fileID: -7076093799646082626}
+  - component: {fileID: 3852631778149863723}
   m_Layer: 0
   m_Name: TreeInvierno10
   m_TagString: Untagged
@@ -92,9 +93,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8452195989426192243}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84fc5db0f5ec51e41804150db01301bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+--- !u!114 &3852631778149863723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452195989426192243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179bee1ef320a4a93b77bddc04a8593e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  limiteX: -15

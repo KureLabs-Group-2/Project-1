@@ -5,6 +5,7 @@ public class FlorSpawner : MonoBehaviour
     public GameObject girasolPrefab;
     public GameObject margaritaPrefab;
     public GameObject rosaPrefab;
+    public GameObject hojaPrefab; // Prefab de la hoja
     public float minX, maxX, minY, maxY;
     public float tiempoEntreFlores = 8f;
     public LayerMask layerEvitar;
@@ -36,13 +37,15 @@ public class FlorSpawner : MonoBehaviour
     }
 
     GameObject ElegirFlorPorProbabilidad()
-    {
-        float r = Random.value;
-        if (r < 0.7f) // 70% girasol
-            return girasolPrefab;
-        else if (r < 0.9f) // 20% margarita
-            return margaritaPrefab;
-        else // 10% rosa
-            return rosaPrefab;
-    }
+{
+    float r = Random.value;
+    if (r < 0.6f) // 60% girasol
+        return girasolPrefab;
+    else if (r < 0.8f) // 20% margarita
+        return margaritaPrefab;
+    else if (r < 0.95f) // 15% rosa
+        return rosaPrefab;
+    else // 5% hoja
+        return hojaPrefab;
+}
 }

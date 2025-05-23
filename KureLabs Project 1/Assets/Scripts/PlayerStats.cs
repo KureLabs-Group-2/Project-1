@@ -7,19 +7,19 @@ public class PlayerStats : MonoBehaviour
     public int puntos = 0;
     public int puntosPorTiempo = 0;
 
-    public float tiempo = 0f;
+   
     public int puntosPorSegundo = 1;
     public SpriteRenderer spriteRenderer; // Asigna el SpriteRenderer en el Inspector
     public bool invulnerable = false; // 
     void Update()
     {
         // Sumar puntos por tiempo recorrido
-        tiempo += Time.deltaTime;
-        if (tiempo >= 1f)
+        GameManager.timeElapsed += Time.deltaTime;
+        if (GameManager.timeElapsed >= 1f)
         {
             puntosPorTiempo += puntosPorSegundo;
             puntos += puntosPorSegundo;
-            tiempo = 0f;
+            GameManager.timeElapsed = 0f;
         }
     }
 
@@ -27,6 +27,7 @@ public class PlayerStats : MonoBehaviour
     public void SumarPuntos(int cantidad)
     {
         puntos += cantidad;
+        Debug.Log("Puntos actuales: " + puntos);
     }
 
     // Llama a este método cuando recibas daño
