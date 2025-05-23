@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,10 +13,17 @@ public class GameManager : MonoBehaviour
 
     public ScreenFader screenFader;
     public float holdFadeTime = 5f;
+
+    public TMP_Text timerText;
+    public float timeElapsed;
+    static public bool gameOver = true;
     
 
     void Start()
     {
+        timerText.gameObject.SetActive(false);
+        gameOver = false;
+        timeElapsed = 0f;
         actualLevel = 0;
         InvokeRepeating("NextLevel", levelTime, levelTime);
     }
@@ -22,7 +31,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!gameOver)
+        {
+            timerText.gameObject.SetActive(true);
+            timeElapsed += Time.deltaTime;
+            UpdateTimerDisplay();
+        }
     }
 
     void NextLevel()
@@ -34,6 +48,21 @@ public class GameManager : MonoBehaviour
         
         StartCoroutine(screenFader.FadeOutIn(holdFadeTime));
 
+    }
+
+    void UpdateTimerDisplay()
+    {
+        int minutes = Mathf.FloorToInt(timeElapsed / 60);
+        int seconds = Mathf.FloorToInt(timeElapsed % 60);
+
+        if (minutes == 0)
+        {
+            timerText.text = seconds.ToString();
+        }
+        else
+        {
+            timerText.text = string.Format("{0}:{1:00}", minutes, seconds);
+        }
     }
 
 }
