@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
     public int vida = 3;
     public SpriteRenderer spriteRenderer; // Asigna el SpriteRenderer en el Inspector
     public bool invulnerable = false;
+    private Animator animator;
 
     void Start()
     {
@@ -14,6 +15,10 @@ public class PlayerStats : MonoBehaviour
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
+        if (animator == null)
+    {
+        animator = GetComponent<Animator>();
+    }
     }
 
     // Llama a este método cuando recibas daño
@@ -25,6 +30,11 @@ public class PlayerStats : MonoBehaviour
             StartCoroutine(ParpadearRojo());
             StartCoroutine(InvulnerabilidadTemporal());
         }
+         if (vida < 0)
+            {
+                animator.SetTrigger("isDead"); // Lanza la animación de muerte
+                // Aquí puedes desactivar controles, etc.
+            }
     }
 
     IEnumerator ParpadearRojo()
