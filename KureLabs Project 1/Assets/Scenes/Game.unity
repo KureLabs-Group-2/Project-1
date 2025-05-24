@@ -1536,8 +1536,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hojaIzquierda: {fileID: 520584497}
-  hojaCentro: {fileID: 994272728}
-  hojaDerecha: {fileID: 1938700260}
+  hojaCentro: {fileID: 1938700260}
+  hojaDerecha: {fileID: 994272728}
 --- !u!114 &1720993432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,7 +1708,7 @@ Transform:
   m_GameObject: {fileID: 1720993429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.09, y: -2.89, z: 0}
+  m_LocalPosition: {x: -6.83, y: -0.87, z: 0}
   m_LocalScale: {x: 0.58457, y: 0.58457, z: 0.58457}
   m_ConstrainProportionsScale: 0
   m_Children: []
