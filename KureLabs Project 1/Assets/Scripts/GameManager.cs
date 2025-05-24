@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public static bool levelChange = false;
 
     public ScreenFader screenFader;
-    public float holdFadeTime = 2f;
+    public float holdFadeTime = 1f;
 
     public TMP_Text timerText;
     public TMP_Text puntosText; // Asigna en el Inspector el texto de puntos

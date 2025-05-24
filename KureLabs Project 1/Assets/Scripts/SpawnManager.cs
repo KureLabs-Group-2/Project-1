@@ -16,8 +16,9 @@ public class SpawnManager : MonoBehaviour
 
     Vector3 ObjectSpawnPos = new Vector3(12.5f, -3.8f, 0);
     public static Vector3 spawnPos = new Vector3(27.8f, 0, 0);
-    
 
+    bool previousLevelChangeState = false;
+    bool coroutinesRunning = true;
 
     // Start is called before the first frame update
     void Start()
@@ -30,13 +31,22 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         timeElapsed = GameManager.timeElapsed;
-        if (GameManager.levelChange)
+        if (GameManager.levelChange && coroutinesRunning)
         {
-
-            Debug.Log("Se paran todas las courutinas");
             StopAllCoroutines();
-            gameObject.SetActive(false);
+            coroutinesRunning = false;
+            Debug.Log("Corutinas detenidas");
         }
+
+        if (!GameManager.levelChange && !coroutinesRunning)
+        {
+            ClearSpawnedObjects();
+            AgainStartAllCoroutines();
+            coroutinesRunning = true;
+            Debug.Log("Corutinas reanudadas");
+        }
+
+        previousLevelChangeState = GameManager.levelChange;
 
     }
 
@@ -105,5 +115,21 @@ public class SpawnManager : MonoBehaviour
 
         Instantiate(zarzaPrefabList[zarzaNum], ObjectSpawnPos, zarzaPrefabList[zarzaNum].transform.rotation);
     }
+
+    void AgainStartAllCoroutines()
+    {
+        StartCoroutine(TreeRandomGenerator());
+        StartCoroutine(ZarzaRandomGenerator());
+    }
+
+    void ClearSpawnedObjects()
+    {
+        foreach (var obj in GameObject.FindGameObjectsWithTag("Obstacle"))
+        {
+            Destroy(obj);
+        }
+    }
 }
+
+
 
