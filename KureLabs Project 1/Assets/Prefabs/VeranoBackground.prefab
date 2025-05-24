@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5603573698825034902}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9, y: -1.6, z: 0.06924512}
+  m_LocalPosition: {x: 3.9, y: 0, z: 0.06924512}
   m_LocalScale: {x: 0.67, y: 0.67, z: 0.67}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landPrefabList:
-  - {fileID: 5603573698825034902, guid: afbffc7402432d34481dd519136f54e5, type: 3}
+  - {fileID: 0}
   - {fileID: 5603573698825034902}
   - {fileID: 5603573698825034902, guid: b8919a5b3a249cc43b902a365c0bbd23, type: 3}
-  - {fileID: 5603573698825034902, guid: 6f573873e226efd409bdd86626e009c6, type: 3}
+  - {fileID: 0}

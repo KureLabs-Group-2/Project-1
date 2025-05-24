@@ -15,6 +15,8 @@ public class ScreenFader : MonoBehaviour
     Vector2 initialSize;
     Vector3 initialPos;
 
+    public GameObject spawnManager;
+
     private void Start()
     {
         initialSize = fadeBlack.rectTransform.sizeDelta;
@@ -58,7 +60,7 @@ public class ScreenFader : MonoBehaviour
 
         GameManager.levelChange = false;
         GameManager.hasFading = false;
-        GameObject.FindWithTag("SpawnManager").SetActive(true);
+        spawnManager.SetActive(true);
     }
 
 }

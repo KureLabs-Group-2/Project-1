@@ -7,8 +7,7 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] treePrefabList;
     public GameObject[] zarzaPrefabList;
-    public GameObject[] backgroundList;
-    public GameObject[] groundList;
+    
 
     int randomTree;
     int zarzaNum;
@@ -36,6 +35,7 @@ public class SpawnManager : MonoBehaviour
 
             Debug.Log("Se paran todas las courutinas");
             StopAllCoroutines();
+            gameObject.SetActive(false);
         }
 
     }

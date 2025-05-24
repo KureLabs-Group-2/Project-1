@@ -11,10 +11,9 @@ public class MoveLeft : MonoBehaviour
 
     void Update()
     {
-        if (!GameManager.levelChange)
-        {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
-        }
+       
+        transform.Translate(Vector3.left * Time.deltaTime * speed);
+        
  
         if (transform.position.x < boundX)
         {
