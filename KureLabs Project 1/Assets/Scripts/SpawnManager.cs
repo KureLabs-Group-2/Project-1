@@ -31,14 +31,14 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         timeElapsed = GameManager.timeElapsed;
-        if (GameManager.levelChange && coroutinesRunning)
+        if (GameManager.hasFading && coroutinesRunning)
         {
             StopAllCoroutines();
             coroutinesRunning = false;
             Debug.Log("Corutinas detenidas");
         }
 
-        if (!GameManager.levelChange && !coroutinesRunning)
+        if (!GameManager.hasFading && !coroutinesRunning)
         {
             ClearSpawnedObjects();
             AgainStartAllCoroutines();
@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
             Debug.Log("Corutinas reanudadas");
         }
 
-        previousLevelChangeState = GameManager.levelChange;
+        previousLevelChangeState = GameManager.hasFading;
 
     }
 

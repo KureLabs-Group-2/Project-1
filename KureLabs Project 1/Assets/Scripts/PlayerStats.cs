@@ -16,6 +16,14 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (GameManager.hasFading)
+        {
+            StartCoroutine(InvulnerabilidadLarga());
+        }
+    }
+
     // Llama a este método cuando recibas daño
     public void QuitarVida(int cantidad)
     {
@@ -45,4 +53,12 @@ public class PlayerStats : MonoBehaviour
         yield return new WaitForSeconds(1f); // 1 segundo de invulnerabilidad
         invulnerable = false;
     }
+    IEnumerator InvulnerabilidadLarga()
+    {
+        invulnerable = true;
+        Debug.Log("Inicia invulnerabilidad");
+        yield return new WaitForSeconds(5f); // 1 segundo de invulnerabilidad
+        invulnerable = false;
+    }
+
 }
