@@ -56,9 +56,11 @@ public class GameManager : MonoBehaviour
             UpdateTimerDisplay();
 
             // --- Gestión de puntos por tiempo ---
+            timeElapsed += Time.deltaTime;
             if (timeElapsed >= 1f)
             {
                 puntos += puntosPorSegundo;
+                timeElapsed = 0f;
             }
 
             // --- Mostrar puntos en tiempo real ---
