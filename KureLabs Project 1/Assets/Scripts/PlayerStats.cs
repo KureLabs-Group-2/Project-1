@@ -45,12 +45,9 @@ public class PlayerStats : MonoBehaviour
             StartCoroutine(InvulnerabilidadTemporal());
             if (vida <= 0)
             {
-                rb.velocity = Vector2.zero; // Detiene cualquier movimiento
-                Vector3 pos = transform.position;
-                pos.y = 4.2f/* valor del suelo, por ejemplo -3.8f */;
-                transform.position = pos;
-                animator.SetTrigger("isDead");
+               
                 FindObjectOfType<GameManager>().EmpezarGameOverConRetraso();
+                FindObjectOfType<PlayerController>().Morir();
             }
             
 
