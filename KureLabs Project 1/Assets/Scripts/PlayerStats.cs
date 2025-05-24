@@ -7,9 +7,11 @@ public class PlayerStats : MonoBehaviour
     public SpriteRenderer spriteRenderer; // Asigna el SpriteRenderer en el Inspector
     public bool invulnerable = false;
     private Animator animator;
+    private Rigidbody2D rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         vida = 3;
     if (spriteRenderer == null)
     {
@@ -43,6 +45,10 @@ public class PlayerStats : MonoBehaviour
             StartCoroutine(InvulnerabilidadTemporal());
             if (vida <= 0)
             {
+                rb.velocity = Vector2.zero; // Detiene cualquier movimiento
+                Vector3 pos = transform.position;
+                pos.y = 4.2f/* valor del suelo, por ejemplo -3.8f */;
+                transform.position = pos;
                 animator.SetTrigger("isDead");
                 FindObjectOfType<GameManager>().EmpezarGameOverConRetraso();
             }
