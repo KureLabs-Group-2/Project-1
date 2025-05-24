@@ -6,14 +6,19 @@ public class PlayerStats : MonoBehaviour
     public int vida = 3;
     public SpriteRenderer spriteRenderer; // Asigna el SpriteRenderer en el Inspector
     public bool invulnerable = false;
+    private Animator animator;
 
     void Start()
     {
         vida = 3;
-        if (spriteRenderer == null)
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
+    if (spriteRenderer == null)
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    if (animator == null)
+    {
+        animator = GetComponent<Animator>();
+    }
     }
 
     void Update()
@@ -36,7 +41,12 @@ public class PlayerStats : MonoBehaviour
             vida -= cantidad;
             StartCoroutine(ParpadearRojo());
             StartCoroutine(InvulnerabilidadTemporal());
-
+            if (vida <= 0)
+            {
+                animator.SetTrigger("isDead");
+                FindObjectOfType<GameManager>().EmpezarGameOverConRetraso();
+            }
+            
 
         }
     }

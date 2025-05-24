@@ -71,9 +71,9 @@ public class GameManager : MonoBehaviour
             if (!hasFading && timeElapsed >= nextLeveltime - 3 && timeElapsed <= nextLeveltime - 2)
             {
                 hasFading = true;
-                
+
                 NextLevel();
-                
+
                 StartCoroutine(screenFader.FadeOutIn(holdFadeTime));
             }
         }
@@ -114,14 +114,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if (stats.vida == 0)
+        if (stats.vida < 0)
         {
             gameOver = true;
             Debug.Log("Game Over!");
             gameOverUI.SetActive(true);
             StartCoroutine(ScaleOverTime(targetScale, duration));
             Time.timeScale = 0f; // Pausa el juego
-        } 
+        }
     }
 
     private IEnumerator ScaleOverTime(Vector3 newScale, float duration)
@@ -138,4 +138,20 @@ public class GameManager : MonoBehaviour
 
         transform.localScale = newScale; // Asegura escala final exacta
     }
+    public void EmpezarGameOverConRetraso()
+{
+    StartCoroutine(GameOverTrasAnimacion());
+}
+
+private IEnumerator GameOverTrasAnimacion()
+{
+    // Espera la duración de la animación de muerte (ajusta el tiempo)
+    yield return new WaitForSeconds(1.5f); // Cambia 1.5f por la duración real de tu animación
+
+    gameOver = true;
+    Debug.Log("Game Over!");
+    gameOverUI.SetActive(true);
+    StartCoroutine(ScaleOverTime(targetScale, duration));
+    Time.timeScale = 0f; // Pausa el juego
+}
 }
