@@ -121,7 +121,6 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
         isGrounded = true; // Asegúrate de que el personaje esté en el suelo
         isJumping = false; // Resetea el estado de salto
-        
         animator.SetTrigger("isDead");
         
    
