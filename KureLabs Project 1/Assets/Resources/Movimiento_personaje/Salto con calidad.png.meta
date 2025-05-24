@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3f771a1347ba747ebb7cce4e41e3720e
+guid: 8901f9008dd80411a96b91b0dd1c0616
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,127 +123,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Correr con calidad_0
+      name: Salto con calidad_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 109
-        width: 272
-        height: 378
+        x: 96
+        y: 99
+        width: 184
+        height: 446
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2399543297e04c38b52e59e238cbdad
-      internalID: 1432525550
+      spriteID: 46dce9e81656a459191f6529f05abc57
+      internalID: 1950922607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Correr con calidad_1
+      name: Salto con calidad_1
       rect:
         serializedVersion: 2
-        x: 299
-        y: 112
-        width: 271
-        height: 373
+        x: 397
+        y: 102
+        width: 204
+        height: 441
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e2941c572e5e468290eba6d23a82555
-      internalID: 552539554
+      spriteID: 242f28085c5f84a9eb46ffefeb7d11f4
+      internalID: -1397298313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Correr con calidad_2
+      name: Salto con calidad_2
       rect:
         serializedVersion: 2
-        x: 585
-        y: 114
-        width: 232
-        height: 368
+        x: 741
+        y: 106
+        width: 209
+        height: 436
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cced87317554f483991e8c031d3b882d
-      internalID: -882187697
+      spriteID: 6394318a547124ffca683c8e037f9cbd
+      internalID: -1892475193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Correr con calidad_3
+      name: Salto con calidad_3
       rect:
         serializedVersion: 2
-        x: 845
-        y: 115
-        width: 249
-        height: 367
+        x: 1044
+        y: 153
+        width: 255
+        height: 433
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80174af7753284ee49b00d2185610f8a
-      internalID: 697135651
+      spriteID: cef54504c0db643248e975ebf9b8d2ba
+      internalID: 157533627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Correr con calidad_4
+      name: Salto con calidad_4
       rect:
         serializedVersion: 2
-        x: 1111
-        y: 117
-        width: 276
-        height: 362
+        x: 1269
+        y: 370
+        width: 4
+        height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6583e0998495947d7a77c1db83443a85
-      internalID: 784404445
+      spriteID: 893dfa23a28814983822cb69b72a22fb
+      internalID: -717064914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Correr con calidad_5
+      name: Salto con calidad_5
       rect:
         serializedVersion: 2
-        x: 1404
-        y: 121
-        width: 260
-        height: 354
+        x: 1386
+        y: 92
+        width: 205
+        height: 407
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a07bbe84930744cd1bef3d8b4ac530ac
-      internalID: -1079292590
+      spriteID: 10cffb4e4ad924fb18f1e987b117c8d2
+      internalID: 1498504735
       vertices: []
       indices: 
       edges: []
@@ -259,12 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Correr con calidad_0: 1432525550
-      Correr con calidad_1: 552539554
-      Correr con calidad_2: -882187697
-      Correr con calidad_3: 697135651
-      Correr con calidad_4: 784404445
-      Correr con calidad_5: -1079292590
+      Salto con calidad_0: 1950922607
+      Salto con calidad_1: -1397298313
+      Salto con calidad_2: -1892475193
+      Salto con calidad_3: 157533627
+      Salto con calidad_4: -717064914
+      Salto con calidad_5: 1498504735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
