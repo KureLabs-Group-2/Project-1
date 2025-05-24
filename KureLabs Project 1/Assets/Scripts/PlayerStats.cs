@@ -29,9 +29,15 @@ public class PlayerStats : MonoBehaviour
     {
         if (!invulnerable)
         {
+            CameraController cam = FindObjectOfType<CameraController>();
+            if (cam != null)
+                cam.ShakeCamera(0.2f, 0.2f); // duración y magnitud ajustables
+
             vida -= cantidad;
             StartCoroutine(ParpadearRojo());
             StartCoroutine(InvulnerabilidadTemporal());
+
+
         }
     }
 

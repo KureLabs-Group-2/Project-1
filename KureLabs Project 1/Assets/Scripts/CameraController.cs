@@ -53,5 +53,31 @@ public class CameraController : MonoBehaviour
         {
             transform.position = startPos;
         }
+
+    }
+
+    public void ShakeCamera(float duration, float magnitude)
+    {
+        StartCoroutine(DoShake(duration, magnitude));
+    }
+
+    IEnumerator DoShake(float duration, float magnitude)
+    {
+        Vector3 originalPos = transform.position;
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * magnitude;
+            float offsetY = Random.Range(-1f, 1f) * magnitude;
+
+            transform.position = new Vector3(originalPos.x + offsetX, originalPos.y + offsetY, originalPos.z);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = originalPos;
     }
 }
