@@ -70,8 +70,9 @@ public class GameManager : MonoBehaviour
     void NextLevel()
     {
         actualLevel++;
-        levelTime += nextLeveltime;
+        nextLeveltime += levelTime;
         Debug.Log("Cambio de estación. Actual level: " + actualLevel);
+        Debug.Log("El siguiente nivel es en  " + nextLeveltime);
         if (actualLevel > 3) { actualLevel = 0; }
     }
 
