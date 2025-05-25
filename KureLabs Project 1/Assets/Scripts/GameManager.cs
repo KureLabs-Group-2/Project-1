@@ -21,8 +21,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverUI;
     private PlayerStats stats;
 
-    public Vector3 targetScale = new Vector3(2f, 2f, 2f); // Escala final
-    public float duration = 1f; // Duración del cambio de escala
+    public Vector3 targetScale = new Vector3(6f, 6f, 6f); // Escala final
+    public float duration = 0.4f; // Duración del cambio de escala
 
 
     public int puntos = 0;
@@ -56,12 +56,12 @@ public class GameManager : MonoBehaviour
             UpdateTimerDisplay();
 
             // --- Gestión de puntos por tiempo ---
-            timeElapsed += Time.deltaTime;
+
             if (timeElapsed >= 1f)
             {
                 puntos += puntosPorSegundo;
-                timeElapsed = 0f;
-            }
+                //timeElapsed = 0f;              //Esto hay que evitarlo siempre
+            } 
 
             // --- Mostrar puntos en tiempo real ---
             if (puntosText != null)
@@ -124,19 +124,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ScaleOverTime(Vector3 newScale, float duration)
+    private IEnumerator ScaleOverTime(Vector3 targetScañe, float duration)
     {
-        Vector3 originalScale = gameOverUI.transform.localScale;
+        Vector3 initialScale = gameOverUI.transform.localScale;
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
-            gameOverUI.transform.localScale = Vector3.Lerp(originalScale, newScale, elapsed / duration);
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / duration;
+            gameOverUI.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
             yield return null;
         }
 
-        transform.localScale = newScale; // Asegura escala final exacta
+        transform.localScale = targetScale; // Asegura escala final exacta
     }
     public void EmpezarGameOverConRetraso()
 {

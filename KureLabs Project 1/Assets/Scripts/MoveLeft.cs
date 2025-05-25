@@ -11,10 +11,12 @@ public class MoveLeft : MonoBehaviour
 
     void Update()
     {
-       
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
+       if (!GameManager.gameOver)
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
+        }
         
- 
+
         if (transform.position.x < boundX)
         {
             Destroy(gameObject);

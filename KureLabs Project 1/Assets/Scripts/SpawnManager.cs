@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         timeElapsed = GameManager.timeElapsed;
-        if (GameManager.hasFading && coroutinesRunning)
+        if (GameManager.hasFading && coroutinesRunning || GameManager.gameOver)
         {
             StopAllCoroutines();
             coroutinesRunning = false;
