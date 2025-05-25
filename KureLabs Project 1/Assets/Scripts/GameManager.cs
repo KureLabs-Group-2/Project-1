@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public int puntosPorSegundo = 1;
 
     public static float timeElapsed;
+    private float puntosElapsed;     // Solo para sumar puntos
+
     public static bool gameOver = false;
     public static bool hasFading = false;
 
@@ -53,14 +55,17 @@ public class GameManager : MonoBehaviour
         {
             timerText.gameObject.SetActive(true);
             timeElapsed += Time.deltaTime;
+            puntosElapsed += Time.deltaTime;
+            UpdateTimerDisplay();
+
             UpdateTimerDisplay();
 
             // --- Gestión de puntos por tiempo ---
 
-            if (timeElapsed >= 1f)
+            if (puntosElapsed>= 1f)
             {
                 puntos += puntosPorSegundo;
-                //timeElapsed = 0f;              //Esto hay que evitarlo siempre
+                puntosElapsed = 0f;              //he creado una nueva variable de tiempo para los puntos
             } 
 
             // --- Mostrar puntos en tiempo real ---
