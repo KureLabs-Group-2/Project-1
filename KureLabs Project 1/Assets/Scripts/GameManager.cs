@@ -34,56 +34,25 @@ public class GameManager : MonoBehaviour
     public static bool gameOver = false;
     public static bool hasFading = false;
 
-    [Header("Menús de estación por nivel")]
-    public GameObject[] levelMenus; // Asigna los 4 prefabs en el inspector
-    public GameObject[] menuPanels;
-    private GameObject currentMenu;
-    public GameObject[] menuPrefabs;
-    private GameObject currentMenuInstance;
-    private bool isPaused = false;
 
 
     void Start()
-    {
+    {   
 
-        Time.timeScale = 0f; // Detener el juego desde el principio
-        isPaused = true;
-        MostrarMenuDelNivel(0); // Al iniciar el juego, muestra el primer menú
         actualLevel = 0;
         timerText.gameObject.SetActive(false);
         if (puntosText != null)
             puntosText.gameObject.SetActive(true);
         gameOver = false;
+        gameOverUI.SetActive(false);
         timeElapsed = 0f;
         actualLevel = 0;
         puntos = 0;
         stats = FindObjectOfType<PlayerStats>();
     }
-    public void IniciarPartida()
-    {
-        Time.timeScale = 1f;
-        isPaused = false;
-
-        // Ocultar menú actual
-        foreach (GameObject menu in menuPanels)
-        {
-            if (menu != null)
-                menu.SetActive(false);
-        }
-
-        Debug.Log("¡Partida iniciada!");
-    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!isPaused)
-                PausarYMostrarMenu();
-            else
-                ReanudarJuego();
-        }
-
         if (!gameOver)
         {
             timerText.gameObject.SetActive(true);
@@ -156,69 +125,6 @@ public class GameManager : MonoBehaviour
         puntos += cantidad;
         Debug.Log("Puntos actuales: " + puntos);
     }
-
-    public void ReiniciarPartida()
-    {
-        Time.timeScale = 1f;
-        isPaused = false;
-
-        // Limpia variables si es necesario (opcional)
-        puntos = 0;
-        timeElapsed = 0f;
-        actualLevel = 0;
-        nextLeveltime = 20;
-        gameOver = false;
-        hasFading = false;
-
-        // Recarga la escena actual
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
-        );
-
-        Debug.Log("Partida reiniciada");
-    }
-    void PausarYMostrarMenu()
-    {
-        isPaused = true;
-        Time.timeScale = 0f;
-
-        MostrarMenuDelNivel(actualLevel);
-    }
-    void ReanudarJuego()
-    {
-        isPaused = false;
-        Time.timeScale = 1f;
-
-        if (currentMenuInstance != null)
-            currentMenuInstance.SetActive(false);
-
-    }
-    void MostrarMenuDelNivel(int nivel)
-    {
-        // Desactivar todos primero
-        foreach (GameObject menu in menuPanels)
-        {
-            if (menu != null)
-                menu.SetActive(false);
-        }
-
-        // Activar el menú correspondiente
-        if (nivel >= 0 && nivel < menuPanels.Length && menuPanels[nivel] != null)
-        {
-            menuPanels[nivel].SetActive(true);
-            CanvasGroup cg = menuPanels[nivel].GetComponent<CanvasGroup>();
-            if (cg != null)
-            {
-                cg.interactable = true;
-                cg.blocksRaycasts = true;
-            }
-        }
-        else
-        {
-            Debug.LogWarning("No se encontró menú para el nivel: " + nivel);
-        }
-    }
-
 
     public void GameOver()
     {
