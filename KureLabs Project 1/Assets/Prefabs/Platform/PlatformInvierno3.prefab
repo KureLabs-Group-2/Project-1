@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3221534888670536155}
+  - component: {fileID: 5026462533983676403}
   m_Layer: 0
   m_Name: PlatformInvierno3
   m_TagString: Untagged
@@ -35,6 +36,19 @@ Transform:
   - {fileID: 2786081595209666972}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5026462533983676403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5706102444710514319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fc5db0f5ec51e41804150db01301bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6
 --- !u!1 &7244201525840347195
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +61,8 @@ GameObject:
   - component: {fileID: 3856803190409809858}
   - component: {fileID: 3681235920922108511}
   - component: {fileID: 561518629449563876}
+  - component: {fileID: 1136543513581689889}
+  - component: {fileID: 3832751163832650327}
   m_Layer: 0
   m_Name: Suelo2
   m_TagString: Untagged
@@ -151,7 +167,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -6.4045105}
   m_SpriteTilingProperty:
@@ -185,6 +201,46 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &1136543513581689889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244201525840347195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62824e732fe30bb4aba3699325ced615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformEffector: {fileID: 561518629449563876}
+--- !u!50 &3832751163832650327
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244201525840347195}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
 --- !u!1 &7618766375750697349
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +253,8 @@ GameObject:
   - component: {fileID: 1701684678383067629}
   - component: {fileID: 4610860464130912671}
   - component: {fileID: 5146470438479049842}
+  - component: {fileID: 555697626561784668}
+  - component: {fileID: 9009951875638086436}
   m_Layer: 0
   m_Name: Suelo1
   m_TagString: Untagged
@@ -301,7 +359,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -6.4045105}
   m_SpriteTilingProperty:
@@ -335,6 +393,46 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &555697626561784668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618766375750697349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62824e732fe30bb4aba3699325ced615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformEffector: {fileID: 5146470438479049842}
+--- !u!50 &9009951875638086436
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618766375750697349}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 5
 --- !u!1001 &5118867285874015681
 PrefabInstance:
   m_ObjectHideFlags: 0
