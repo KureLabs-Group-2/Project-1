@@ -15,6 +15,8 @@ public class ScreenFader : MonoBehaviour
     Vector2 initialSize;
     Vector3 initialPos;
 
+    public GameObject spawnManager;
+
     private void Start()
     {
         initialSize = fadeBlack.rectTransform.sizeDelta;
@@ -23,8 +25,8 @@ public class ScreenFader : MonoBehaviour
 
     public IEnumerator FadeOutIn(float holdTime)
     {
-        
 
+        
         float t = 0f;
 
         while (t < fadeDuration)
@@ -38,29 +40,27 @@ public class ScreenFader : MonoBehaviour
             yield return null;
         }
 
-
+        GameManager.levelChange = true;
         yield return new WaitForSeconds(holdTime);
 
 
         t = 0f;
 
-        Debug.Log("Iniciando FadeIn");
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
 
             fadeBlack.rectTransform.sizeDelta = Vector2.Lerp(targetSize,initialSize , t);
             fadeBlack.rectTransform.localPosition = Vector3.Lerp(targetPos, initialPos, t);
-            Debug.Log("Fade IN...");
             
             yield return null;
         }
 
-        Debug.Log("FadeIn terminado");
        
 
         GameManager.levelChange = false;
         GameManager.hasFading = false;
+
     }
 
 }

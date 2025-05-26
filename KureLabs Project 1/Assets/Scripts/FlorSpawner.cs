@@ -37,15 +37,17 @@ public class FlorSpawner : MonoBehaviour
     }
 
     GameObject ElegirFlorPorProbabilidad()
-{
+    {
     float r = Random.value;
+    PlayerStats stats = FindObjectOfType<PlayerStats>();
+    bool vidaLlena = stats != null && stats.vida == 3;
     if (r < 0.6f) // 60% girasol
-        return girasolPrefab;
-    else if (r < 0.8f) // 20% margarita
-        return margaritaPrefab;
-    else if (r < 0.95f) // 15% rosa
-        return rosaPrefab;
-    else // 5% hoja
-        return hojaPrefab;
-}
+            return girasolPrefab;
+        else if (r < 0.8f) // 20% margarita
+            return margaritaPrefab;
+        else if (r < 0.95f) // 15% rosa
+            return rosaPrefab;
+        else // 5% hoja
+             return vidaLlena ? girasolPrefab : hojaPrefab; // Si vida llena, spawnea girasol en vez de hoja
+    }
 }

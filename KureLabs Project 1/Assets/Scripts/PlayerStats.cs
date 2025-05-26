@@ -6,13 +6,28 @@ public class PlayerStats : MonoBehaviour
     public int vida = 3;
     public SpriteRenderer spriteRenderer; // Asigna el SpriteRenderer en el Inspector
     public bool invulnerable = false;
+    private Animator animator;
+    private Rigidbody2D rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         vida = 3;
-        if (spriteRenderer == null)
+    if (spriteRenderer == null)
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    if (animator == null)
+    {
+        animator = GetComponent<Animator>();
+    }
+    }
+
+    void Update()
+    {
+        if (GameManager.levelChange)
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            StartCoroutine(InvulnerabilidadLarga());
         }
     }
 
@@ -21,9 +36,21 @@ public class PlayerStats : MonoBehaviour
     {
         if (!invulnerable)
         {
+            CameraController cam = FindObjectOfType<CameraController>();
+            if (cam != null)
+                cam.ShakeCamera(0.2f, 0.2f); // duración y magnitud ajustables
+
             vida -= cantidad;
             StartCoroutine(ParpadearRojo());
             StartCoroutine(InvulnerabilidadTemporal());
+            if (vida <= 0)
+            {
+               
+                FindObjectOfType<GameManager>().EmpezarGameOverConRetraso();
+                FindObjectOfType<PlayerController>().Morir();
+            }
+            
+
         }
     }
 
@@ -45,4 +72,12 @@ public class PlayerStats : MonoBehaviour
         yield return new WaitForSeconds(1f); // 1 segundo de invulnerabilidad
         invulnerable = false;
     }
+    IEnumerator InvulnerabilidadLarga()
+    {
+        invulnerable = true;
+        Debug.Log("Inicia invulnerabilidad");
+        yield return new WaitForSeconds(6f); // 6 segundo de invulnerabilidad
+        invulnerable = false;
+    }
+
 }

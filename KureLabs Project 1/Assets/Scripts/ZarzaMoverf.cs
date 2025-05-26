@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ZarzaMover : MonoBehaviour
 {
-    public float speed = 5f;
+    public float speed = 6f;
     public float limiteX = -15f; // Ajusta este valor según tu escena
 
     void Update()

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 452a3ad43c25e4df6ae19ad1a295683e
+guid: 7e712a12df0f0420798358d042adaf2d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Correr con calidad_0
+      name: Muerte con calidad_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 109
-        width: 288
-        height: 378
+        x: 112
+        y: 96
+        width: 142
+        height: 404
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 398dfdd861f04473dbb7cc8fadb53aae
-      internalID: -418201398
+      spriteID: 0780b5f32a6964ee79f71daa8486e878
+      internalID: 598028945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Correr con calidad_1
+      name: Muerte con calidad_1
       rect:
         serializedVersion: 2
-        x: 296
-        y: 112
-        width: 266
-        height: 373
+        x: 373
+        y: 96
+        width: 209
+        height: 314
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 061040810469d4e2ea7290587050a0fa
-      internalID: 1711699249
+      spriteID: 3ed4e92f539ba4a8aa3389bdfae4b410
+      internalID: -1128273649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Correr con calidad_2
+      name: Muerte con calidad_2
       rect:
         serializedVersion: 2
-        x: 571
-        y: 114
-        width: 252
-        height: 368
+        x: 758
+        y: 98
+        width: 304
+        height: 274
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,71 +179,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f76cb205c5d564bfdb1eea0016ed1007
-      internalID: 1027453223
+      spriteID: 285232c1c7f6042c8b6106756f590cbc
+      internalID: 922217704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Correr con calidad_3
+      name: Muerte con calidad_3
       rect:
         serializedVersion: 2
-        x: 847
-        y: 115
-        width: 229
-        height: 367
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1131
+        y: 89
+        width: 449
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5055973, y: 2.4511683}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9064abd58ca964883a8281ee1f62f32a
-      internalID: 182773251
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Correr con calidad_4
-      rect:
-        serializedVersion: 2
-        x: 1099
-        y: 115
-        width: 291
-        height: 366
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 00c99c9a8ca19482081f64310386e8ba
-      internalID: 1168731576
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Correr con calidad_5
-      rect:
-        serializedVersion: 2
-        x: 1400
-        y: 121
-        width: 268
-        height: 354
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ce07550797246447c8e818cb9d5389fc
-      internalID: -170945232
+      spriteID: 0b2f487e6178143c28a31d82abb8bf5a
+      internalID: -1596509050
       vertices: []
       indices: 
       edges: []
@@ -259,12 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Correr con calidad_0: -418201398
-      Correr con calidad_1: 1711699249
-      Correr con calidad_2: 1027453223
-      Correr con calidad_3: 182773251
-      Correr con calidad_4: 1168731576
-      Correr con calidad_5: -170945232
+      Muerte con calidad_0: 598028945
+      Muerte con calidad_1: -1128273649
+      Muerte con calidad_2: 922217704
+      Muerte con calidad_3: -1596509050
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
