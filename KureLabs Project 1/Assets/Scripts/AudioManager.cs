@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     [Header("----- Audio Clip -----")]
     public AudioClip musicaPrimavera;
     public AudioClip musicaVerano;
-    public AudioClip musicaOtoño;
+    public AudioClip musicaOtono;
     public AudioClip musicaInvierno;
     public AudioClip death;
     public AudioClip checkpoint;
@@ -51,7 +51,7 @@ public class AudioManager : MonoBehaviour
                 ChangeMusic(musicaVerano);
                 break;
             case 2:
-                ChangeMusic(musicaOtoño);
+                ChangeMusic(musicaOtono);
                 break;
             case 3:
                 ChangeMusic(musicaInvierno);
