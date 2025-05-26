@@ -60,7 +60,7 @@ public class ScreenFader : MonoBehaviour
 
         GameManager.levelChange = false;
         GameManager.hasFading = false;
-        spawnManager.SetActive(true);
+
     }
 
 }

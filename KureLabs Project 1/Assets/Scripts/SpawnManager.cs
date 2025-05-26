@@ -7,10 +7,12 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] treePrefabList;
     public GameObject[] zarzaPrefabList;
+    public GameObject[] platformPrefabList;
     
 
     int randomTree;
     int zarzaNum;
+    int randomPlatform;
 
     float timeElapsed;
 
@@ -76,6 +78,18 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    IEnumerator Platform()
+    {
+        while (true)
+        {
+            PlatformInstantiate();
+
+            float randomRate = UnityEngine.Random.Range(3, 6);
+
+            yield return new WaitForSeconds(randomRate);
+        }
+    }
+
     void TreeInstantiate()
     {
         switch (GameManager.actualLevel)
@@ -114,6 +128,30 @@ public class SpawnManager : MonoBehaviour
         }
 
         Instantiate(zarzaPrefabList[zarzaNum], ObjectSpawnPos, zarzaPrefabList[zarzaNum].transform.rotation);
+    }
+
+    void PlatformInstantiate()
+    {
+        switch (GameManager.actualLevel)
+        {
+            case 0:
+                randomPlatform = Random.Range(0, 3);
+                break;
+            case 1:
+                randomPlatform = Random.Range(3, 6);
+                break;
+            case 2:
+                randomPlatform = Random.Range(6, 9);
+                break;
+            case 3:
+                randomPlatform = Random.Range(9, 12);
+                break;
+            default:
+                Debug.LogWarning("Nivel no reconocido: " + GameManager.actualLevel);
+                return;
+        }
+
+        Instantiate(platformPrefabList[randomPlatform], ObjectSpawnPos, platformPrefabList[randomPlatform].transform.rotation);
     }
 
     void AgainStartAllCoroutines()

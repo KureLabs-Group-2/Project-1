@@ -37,12 +37,14 @@ public class GameManager : MonoBehaviour
 
 
     void Start()
-    {
+    {   
+
         actualLevel = 0;
         timerText.gameObject.SetActive(false);
         if (puntosText != null)
             puntosText.gameObject.SetActive(true);
         gameOver = false;
+        gameOverUI.SetActive(false);
         timeElapsed = 0f;
         actualLevel = 0;
         puntos = 0;
@@ -58,7 +60,6 @@ public class GameManager : MonoBehaviour
             puntosElapsed += Time.deltaTime;
             UpdateTimerDisplay();
 
-            UpdateTimerDisplay();
 
             // --- Gestión de puntos por tiempo ---
 
@@ -84,6 +85,13 @@ public class GameManager : MonoBehaviour
         }
 
         GameOver();
+
+        if (gameOver && Input.GetKeyDown(KeyCode.R))
+        {
+            Time.timeScale = 1f; // Reanuda el juego
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
+        }
     }
 
     void NextLevel()
@@ -93,6 +101,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Cambio de estación. Actual level: " + actualLevel);
         Debug.Log("El siguiente nivel es en  " + nextLeveltime);
         if (actualLevel > 3) { actualLevel = 0; }
+        AudioManager.Instance.UpdateMusicForLevel(actualLevel);
     }
 
     void UpdateTimerDisplay()
@@ -124,26 +133,12 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             Debug.Log("Game Over!");
             gameOverUI.SetActive(true);
-            StartCoroutine(ScaleOverTime(targetScale, duration));
+            
             Time.timeScale = 0f; // Pausa el juego
         }
     }
 
-    private IEnumerator ScaleOverTime(Vector3 targetScañe, float duration)
-    {
-        Vector3 initialScale = gameOverUI.transform.localScale;
-        float elapsed = 0f;
 
-        while (elapsed < duration)
-        {
-            elapsed += Time.unscaledDeltaTime;
-            float t = elapsed / duration;
-            gameOverUI.transform.localScale = Vector3.Lerp(initialScale, targetScale, t);
-            yield return null;
-        }
-
-        transform.localScale = targetScale; // Asegura escala final exacta
-    }
     public void EmpezarGameOverConRetraso()
 {
     StartCoroutine(GameOverTrasAnimacion());
@@ -157,7 +152,6 @@ private IEnumerator GameOverTrasAnimacion()
     gameOver = true;
     Debug.Log("Game Over!");
     gameOverUI.SetActive(true);
-    StartCoroutine(ScaleOverTime(targetScale, duration));
     Time.timeScale = 0f; // Pausa el juego
 }
 }

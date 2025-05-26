@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
@@ -7,7 +8,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
 
     [Header("----- Audio Clip -----")]
-    public AudioClip background;
+    public AudioClip musicaPrimavera;
+    public AudioClip musicaVerano;
+    public AudioClip musicaOtoño;
+    public AudioClip musicaInvierno;
     public AudioClip death;
     public AudioClip checkpoint;
 
@@ -27,7 +31,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicSource.clip = background;
+        musicSource.clip = musicaPrimavera;
         musicSource.Play();
     }
 
@@ -36,6 +40,34 @@ public class AudioManager : MonoBehaviour
         if (clip != null && SFXSource != null)
         {
             SFXSource.PlayOneShot(clip, volume);
+        }
+    }
+
+    public void UpdateMusicForLevel(int level)
+    {
+        switch (level)
+        {
+            case 1:
+                ChangeMusic(musicaVerano);
+                break;
+            case 2:
+                ChangeMusic(musicaOtoño);
+                break;
+            case 3:
+                ChangeMusic(musicaInvierno);
+                break;
+            default:
+                ChangeMusic(musicaPrimavera);
+                break;
+        }
+    }
+    public void ChangeMusic(AudioClip newClip)
+    {
+        if (newClip != null && musicSource != null)
+        {
+            musicSource.Stop();
+            musicSource.clip = newClip;
+            musicSource.Play();
         }
     }
 }
