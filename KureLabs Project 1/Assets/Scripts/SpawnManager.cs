@@ -159,6 +159,7 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(TreeRandomGenerator());
         StartCoroutine(ZarzaRandomGenerator());
+        StartCoroutine(PlatformGenerator());
     }
 
     void ClearSpawnedObjects()
