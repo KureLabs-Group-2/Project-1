@@ -3,15 +3,15 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class SettingsManager : MonoBehaviour
 {
-    public static SettingsManager Instance { get; private set; }
+    public static SettingsManager Instance;
 
-    public float Volume { get; private set; } = 1.0f;
-    public float Brightness { get; private set; } = 1.0f;
+    public float Volume { get; private set; } = 1f;
+    public float Brightness { get; private set; } = 1f;
 
-    public float defaultVolume = 1.0f;
-    public float defaultBrightness = 1.0f;
+    [Header("Post Processing")]
+    public PostProcessProfile postProcessProfile;
 
-    public PostProcessProfile brightnessProfile;
+    private AutoExposure _exposure;
 
     private void Awake()
     {
@@ -20,64 +20,57 @@ public class SettingsManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        LoadSettings();
-        ApplySettings();
-    }
+        if (postProcessProfile != null)
+            postProcessProfile.TryGetSettings(out _exposure);
 
-    private void LoadSettings()
-    {
-        Volume = PlayerPrefs.GetFloat("masterVolume", defaultVolume);
-        Brightness = PlayerPrefs.GetFloat("masterBrightness", defaultBrightness);
+        LoadSettings();
+        ApplyVolume();
+        ApplyBrightness();
     }
 
     public void SetVolume(float value)
     {
         Volume = value;
-        AudioListener.volume = value;
+        PlayerPrefs.SetFloat("masterVolume", value);
+        ApplyVolume();
     }
 
     public void SetBrightness(float value)
     {
         Brightness = value;
-
-        if (brightnessProfile.TryGetSettings(out AutoExposure exposure))
-        {
-            exposure.keyValue.value = Mathf.Max(0.05f, value);
-        }
+        PlayerPrefs.SetFloat("masterBrightness", value);
+        ApplyBrightness();
     }
 
     public void ApplyVolume()
     {
-        PlayerPrefs.SetFloat("masterVolume", Volume);
+        AudioListener.volume = Volume;
     }
 
     public void ApplyBrightness()
     {
-        PlayerPrefs.SetFloat("masterBrightness", Brightness);
-    }
-
-    public void ResetSetting(string settingType)
-    {
-        if (settingType == "Audio")
+        if (_exposure != null)
         {
-            SetVolume(defaultVolume);
-            ApplyVolume();
-        }
-        else if (settingType == "Brightness")
-        {
-            SetBrightness(defaultBrightness);
-            ApplyBrightness();
+            _exposure.keyValue.value = Mathf.Max(0.05f, Brightness);
         }
     }
 
-    private void ApplySettings()
+    private void LoadSettings()
     {
-        SetVolume(Volume);
-        SetBrightness(Brightness);
+        Volume = PlayerPrefs.GetFloat("masterVolume", 1f);
+        Brightness = PlayerPrefs.GetFloat("masterBrightness", 1f);
+    }
+
+    public void ResetVolume()
+    {
+        SetVolume(1f);
+    }
+
+    public void ResetBrightness()
+    {
+        SetBrightness(1f);
     }
 }
-

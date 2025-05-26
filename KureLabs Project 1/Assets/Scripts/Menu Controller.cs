@@ -1,110 +1,76 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.Rendering.PostProcessing;
 
 public class MenuController : MonoBehaviour
 {
-    [Header("Volume Setting")]
-    [SerializeField] private TMP_Text volumeTextValue = null;
-    [SerializeField] private Slider volumeSlider = null;
-    [SerializeField] private float defaultVolume = 1.0f;
+    [Header("Volume")]
+    public TMP_Text volumeTextValue;
+    public Slider volumeSlider;
 
-    [Header("Brightness Settings")]
-    [SerializeField] private Slider brightnessSlider = null;
-    [SerializeField] private TMP_Text brightnessTexValue = null;
-    [SerializeField] private float defaultBrightness = 1f;
-
-    public PostProcessProfile brightness;
-    public PostProcessLayer layer;
-    private float _brightnessLevel;
+    [Header("Brightness")]
+    public TMP_Text brightnessTextValue;
+    public Slider brightnessSlider;
 
     [Header("Confirmation")]
-    [SerializeField] private GameObject confirmationPrompt = null;
+    public GameObject confirmationPrompt;
 
-    [Header("Levels to load")]
-    public string _newGameLevel;
-    private string levelToLoad;
-    [SerializeField] private GameObject noSavedGameDialog = null;
-
-    public void NewGameDialogYes()
+    private void Start()
     {
-        SceneManager.LoadScene(_newGameLevel);
-    }
+        if (SettingsManager.Instance != null)
+        {
+            volumeSlider.value = SettingsManager.Instance.Volume;
+            volumeTextValue.text = SettingsManager.Instance.Volume.ToString("0.0");
 
-    public void LoadGameDialogYes()
-    {
-        if (PlayerPrefs.HasKey("SavedLevel"))
-        {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            SceneManager.LoadScene(levelToLoad);
-        }
-        else
-        {
-            noSavedGameDialog.SetActive(true);
+            brightnessSlider.value = SettingsManager.Instance.Brightness;
+            brightnessTextValue.text = SettingsManager.Instance.Brightness.ToString("0.0");
         }
     }
 
-    public void ExitButton()
+    public void OnVolumeChange(float value)
     {
-        Application.Quit();
+        volumeTextValue.text = value.ToString("0.0");
+        SettingsManager.Instance?.SetVolume(value);
     }
 
-    public void SetVolume(float volume)
+    public void OnBrightnessChange(float value)
     {
-        SettingsManager.Instance.SetVolume(volume);
-        volumeTextValue.text = volume.ToString("0.0");
+        brightnessTextValue.text = value.ToString("0.0");
+        SettingsManager.Instance?.SetBrightness(value);
     }
 
     public void VolumeApply()
     {
-        SettingsManager.Instance.ApplyVolume();
+        SettingsManager.Instance?.SetVolume(volumeSlider.value);
         StartCoroutine(ConfirmationBox());
-    }
-
-    public void SetBrightness(float brightness)
-    {
-        _brightnessLevel = brightness;
-        brightnessTexValue.text = brightness.ToString("0.0");
-
-        AutoExposure exposure;
-        if (this.brightness.TryGetSettings(out exposure))
-        {
-            exposure.keyValue.value = Mathf.Max(0.05f, brightness);
-        }
-
-        SettingsManager.Instance.SetBrightness(brightness);
     }
 
     public void BrightnessApply()
     {
-        SettingsManager.Instance.ApplyBrightness();
+        SettingsManager.Instance?.SetBrightness(brightnessSlider.value);
         StartCoroutine(ConfirmationBox());
     }
 
-    public void ResetButton(string menuType)
+    public void ResetButton(string type)
     {
-        if (menuType == "Brightness")
+        if (type == "Audio")
         {
-            brightnessSlider.value = defaultBrightness;
-            brightnessTexValue.text = defaultBrightness.ToString("0.0");
-            SetBrightness(defaultBrightness);
-            SettingsManager.Instance.SetBrightness(defaultBrightness);
+            SettingsManager.Instance?.ResetVolume();
+            volumeSlider.value = SettingsManager.Instance.Volume;
+            volumeTextValue.text = SettingsManager.Instance.Volume.ToString("0.0");
         }
-        else if (menuType == "Audio")
+        else if (type == "Brightness")
         {
-            volumeSlider.value = defaultVolume;
-            volumeTextValue.text = defaultVolume.ToString("0.0");
-            SetVolume(defaultVolume);
-            SettingsManager.Instance.SetVolume(defaultVolume);
+            SettingsManager.Instance?.ResetBrightness();
+            brightnessSlider.value = SettingsManager.Instance.Brightness;
+            brightnessTextValue.text = SettingsManager.Instance.Brightness.ToString("0.0");
         }
     }
 
-    public IEnumerator ConfirmationBox()
+    private IEnumerator ConfirmationBox()
     {
+        if (confirmationPrompt == null) yield break;
         confirmationPrompt.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         confirmationPrompt.SetActive(false);
