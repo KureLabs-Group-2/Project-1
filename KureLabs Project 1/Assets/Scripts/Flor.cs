@@ -4,6 +4,7 @@ public class Flor : MonoBehaviour
 {
     public enum TipoFlor { Girasol, Margarita, Rosa }
     public TipoFlor tipoFlor;
+    public GameObject florEfectoPrefab;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,6 +24,14 @@ public class Flor : MonoBehaviour
                     break;
             }
             FindObjectOfType<GameManager>().SumarPuntos(puntos);
+
+            // Instancia el efecto como hijo del jugador
+            if (florEfectoPrefab != null)
+            {
+                Instantiate(florEfectoPrefab, collision.transform.position, Quaternion.identity, collision.transform);
+            }
+
+            // Destruye la flor después de recogerla
             Destroy(gameObject);
         }
     }

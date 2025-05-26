@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tipoFlor: 1
+  florEfectoPrefab: {fileID: 8083992549550751827, guid: b6054b8bbdb104362b991c040ad628d2, type: 3}
 --- !u!114 &1840186340600332852
 MonoBehaviour:
   m_ObjectHideFlags: 0

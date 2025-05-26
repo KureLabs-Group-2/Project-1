@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tipoFlor: 0
+  florEfectoPrefab: {fileID: 8083992549550751827, guid: b6054b8bbdb104362b991c040ad628d2, type: 3}
 --- !u!50 &1825729326874076999
 Rigidbody2D:
   serializedVersion: 4
