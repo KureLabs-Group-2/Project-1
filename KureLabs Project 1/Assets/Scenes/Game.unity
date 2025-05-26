@@ -226,7 +226,19 @@ MonoBehaviour:
   - {fileID: 3476068658695404793, guid: dbee7a675b3203f4ab18b463544f598b, type: 3}
   - {fileID: 5387137763903462801, guid: 21f2b18df442acd4183d8a34b2e89d92, type: 3}
   - {fileID: 1960146334221936500, guid: abb12ac08df1b2e4ba1e4a7a1e4be820, type: 3}
-  platformPrefabList: []
+  platformPrefabList:
+  - {fileID: 5706102444710514319, guid: 2634363fe3de3db4abc0f7ec75b3379a, type: 3}
+  - {fileID: 5706102444710514319, guid: cda345e75d5cf704aa946304577531fe, type: 3}
+  - {fileID: 5706102444710514319, guid: 15c6422d8c3548c4892842d5dcd91f2f, type: 3}
+  - {fileID: 5706102444710514319, guid: 355142c60d7b60c4397eac1e058b6704, type: 3}
+  - {fileID: 5706102444710514319, guid: cf633fa9fbc486c4191c710d13acc587, type: 3}
+  - {fileID: 5706102444710514319, guid: 97c0a3ff9fad8414d961d14d25edf66a, type: 3}
+  - {fileID: 5706102444710514319, guid: fb4d34a335197564290ab1aa1f74489b, type: 3}
+  - {fileID: 5706102444710514319, guid: 615216801f727624f8e2d2756ceb56fa, type: 3}
+  - {fileID: 5706102444710514319, guid: 495c0d3263fcc94419471eeba254b335, type: 3}
+  - {fileID: 5706102444710514319, guid: 28ebde15276a11d45997ede92a1c9b7e, type: 3}
+  - {fileID: 5706102444710514319, guid: 9a26e9ed60fa96b44af1aaaacbd92ad2, type: 3}
+  - {fileID: 5706102444710514319, guid: e0f2cfb66eb184c41a84b089c7db01fe, type: 3}
 --- !u!4 &249106600
 Transform:
   m_ObjectHideFlags: 0
@@ -747,6 +759,10 @@ PrefabInstance:
     - target: {fileID: 9185764714455727982, guid: c531abe76ebe9734eba6afe822c869b0, type: 3}
       propertyPath: m_Name
       value: Plataforma
+      objectReference: {fileID: 0}
+    - target: {fileID: 9185764714455727982, guid: c531abe76ebe9734eba6afe822c869b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

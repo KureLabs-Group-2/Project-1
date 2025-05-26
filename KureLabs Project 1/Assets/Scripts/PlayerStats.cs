@@ -76,7 +76,7 @@ public class PlayerStats : MonoBehaviour
     {
         invulnerable = true;
         Debug.Log("Inicia invulnerabilidad");
-        yield return new WaitForSeconds(5f); // 1 segundo de invulnerabilidad
+        yield return new WaitForSeconds(6f); // 6 segundo de invulnerabilidad
         invulnerable = false;
     }
 
