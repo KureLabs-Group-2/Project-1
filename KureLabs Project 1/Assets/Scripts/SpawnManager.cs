@@ -18,7 +18,6 @@ public class SpawnManager : MonoBehaviour
 
     Vector3 ObjectSpawnPos = new Vector3(12.5f, -3.8f, 0);
     public static Vector3 spawnPos = new Vector3(27.8f, 0, 0);
-    Vector3 platformSpawnPos;
 
     bool previousLevelChangeState = false;
     bool coroutinesRunning = true;
@@ -86,7 +85,7 @@ public class SpawnManager : MonoBehaviour
         {
             PlatformInstantiate();
 
-            float randomRate = UnityEngine.Random.Range(2, 8);
+            float randomRate = UnityEngine.Random.Range(4, 9);
 
             yield return new WaitForSeconds(randomRate);
         }
@@ -138,26 +137,22 @@ public class SpawnManager : MonoBehaviour
         {
             case 0:
                 randomPlatform = Random.Range(0, 3);
-                platformSpawnPos =new Vector3(0,0,0);
                 break;
             case 1:
                 randomPlatform = Random.Range(3, 6);
-                platformSpawnPos = new Vector3(0, 0, 0);
                 break;
             case 2:
                 randomPlatform = Random.Range(6, 9);
-                platformSpawnPos = new Vector3(0, 0, 0);
                 break;
             case 3:
                 randomPlatform = Random.Range(9, 12);
-                platformSpawnPos = new Vector3(0, 0, 0);
                 break;
             default:
                 Debug.LogWarning("Nivel no reconocido: " + GameManager.actualLevel);
                 return;
         }
 
-        Instantiate(platformPrefabList[randomPlatform], platformSpawnPos, platformPrefabList[randomPlatform].transform.rotation);
+        Instantiate(platformPrefabList[randomPlatform]);
     }
 
     void AgainStartAllCoroutines()

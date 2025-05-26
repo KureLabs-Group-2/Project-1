@@ -226,6 +226,7 @@ MonoBehaviour:
   - {fileID: 3476068658695404793, guid: dbee7a675b3203f4ab18b463544f598b, type: 3}
   - {fileID: 5387137763903462801, guid: 21f2b18df442acd4183d8a34b2e89d92, type: 3}
   - {fileID: 1960146334221936500, guid: abb12ac08df1b2e4ba1e4a7a1e4be820, type: 3}
+  platformPrefabList: []
 --- !u!4 &249106600
 Transform:
   m_ObjectHideFlags: 0
