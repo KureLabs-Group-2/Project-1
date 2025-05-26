@@ -25,7 +25,7 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.hasFading)
+        if (GameManager.levelChange)
         {
             StartCoroutine(InvulnerabilidadLarga());
         }
@@ -76,7 +76,7 @@ public class PlayerStats : MonoBehaviour
     {
         invulnerable = true;
         Debug.Log("Inicia invulnerabilidad");
-        yield return new WaitForSeconds(6f); // 6 segundo de invulnerabilidad
+        yield return new WaitForSeconds(5f); // 6 segundo de invulnerabilidad
         invulnerable = false;
     }
 
