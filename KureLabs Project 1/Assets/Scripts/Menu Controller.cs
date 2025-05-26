@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Rendering.PostProcessing;
+
 public class MenuController : MonoBehaviour
 {
     [Header("Volume Setting")]
@@ -15,12 +16,11 @@ public class MenuController : MonoBehaviour
     [Header("Brightness Settings")]
     [SerializeField] private Slider brightnessSlider = null;
     [SerializeField] private TMP_Text brightnessTexValue = null;
-    [SerializeField] private float defaultBrightness = 1;
+    [SerializeField] private float defaultBrightness = 1f;
 
     public PostProcessProfile brightness;
     public PostProcessLayer layer;
     private float _brightnessLevel;
-
 
     [Header("Confirmation")]
     [SerializeField] private GameObject confirmationPrompt = null;
@@ -47,6 +47,7 @@ public class MenuController : MonoBehaviour
             noSavedGameDialog.SetActive(true);
         }
     }
+
     public void ExitButton()
     {
         Application.Quit();
@@ -54,32 +55,14 @@ public class MenuController : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        AudioListener.volume = volume;
+        SettingsManager.Instance.SetVolume(volume);
         volumeTextValue.text = volume.ToString("0.0");
     }
 
     public void VolumeApply()
     {
-        PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
+        SettingsManager.Instance.ApplyVolume();
         StartCoroutine(ConfirmationBox());
-    }
-
-    public void ResetButton(string MenuType)
-    {
-        if (MenuType == "Brightness")
-        {
-            brightnessSlider.value = defaultBrightness;
-            brightnessTexValue.text = defaultBrightness.ToString("0.0");
-            SetBrightness(defaultBrightness);  // Aplica visualmente el valor
-            BrightnessApply();                 // Guarda en PlayerPrefs si es necesario
-        }
-        if (MenuType == "Audio")
-        {
-            AudioListener.volume = defaultVolume;
-            volumeSlider.value = defaultVolume;
-            volumeTextValue.text = defaultVolume.ToString("0.0");
-            VolumeApply();
-        }
     }
 
     public void SetBrightness(float brightness)
@@ -92,11 +75,32 @@ public class MenuController : MonoBehaviour
         {
             exposure.keyValue.value = Mathf.Max(0.05f, brightness);
         }
+
+        SettingsManager.Instance.SetBrightness(brightness);
     }
 
     public void BrightnessApply()
     {
-        PlayerPrefs.SetFloat("masterBrightness", _brightnessLevel);
+        SettingsManager.Instance.ApplyBrightness();
+        StartCoroutine(ConfirmationBox());
+    }
+
+    public void ResetButton(string menuType)
+    {
+        if (menuType == "Brightness")
+        {
+            brightnessSlider.value = defaultBrightness;
+            brightnessTexValue.text = defaultBrightness.ToString("0.0");
+            SetBrightness(defaultBrightness);
+            SettingsManager.Instance.SetBrightness(defaultBrightness);
+        }
+        else if (menuType == "Audio")
+        {
+            volumeSlider.value = defaultVolume;
+            volumeTextValue.text = defaultVolume.ToString("0.0");
+            SetVolume(defaultVolume);
+            SettingsManager.Instance.SetVolume(defaultVolume);
+        }
     }
 
     public IEnumerator ConfirmationBox()
